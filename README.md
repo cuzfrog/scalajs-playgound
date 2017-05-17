@@ -1,1 +1,1 @@
-# scala_sbt_template
+# scalajs-playground
