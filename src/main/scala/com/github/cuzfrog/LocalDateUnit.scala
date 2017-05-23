@@ -9,6 +9,8 @@ import scala.scalajs.js
   */
 object LocalDateUnit {
   def dateParse(in: CharSequence): LocalDate = {
+
+
     val date = new js.Date(js.Date.parse(in.toString))
     val year = date.getUTCFullYear
     val month = date.getUTCMonth + 1 //months from 1-12

@@ -24,7 +24,7 @@ lazy val testSuite = CrossProject(
   crossType = CrossType.Full
 ).
   jsConfigure(_ .enablePlugins(ScalaJSPlugin)).
-  settings(commonSettings: _*).
+  settings(commonSettings).
   settings(
     libraryDependencies ++= Seq(
       "com.lihaoyi" %%% "utest" % "0.4.7" % "test"
