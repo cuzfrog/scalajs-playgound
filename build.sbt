@@ -12,9 +12,13 @@ lazy val root = (project in file("."))
     name := "scalajs-playground",
     version := "0.0.1",
     libraryDependencies ++= Seq(
-      "org.scala-js" %%% "scalajs-java-time" % "0.2.1"
+      "org.scala-js" %%% "scalajs-java-time" % "0.2.1",
+      "com.lihaoyi" %%% "utest" % "0.4.7" % "test"
     ),
-    scalaJSUseMainModuleInitializer := true
+    scalaJSUseMainModuleInitializer := true,
+    scalaJSModuleKind := ModuleKind.CommonJSModule,
+    testFrameworks += new TestFramework("utest.runner.Framework"),
+    parallelExecution in Test := false
   ).enablePlugins(ScalaJSPlugin)
 
 lazy val testSuite = CrossProject(
@@ -29,7 +33,8 @@ lazy val testSuite = CrossProject(
     libraryDependencies ++= Seq(
       "com.lihaoyi" %%% "utest" % "0.4.7" % "test"
     ),
-    testFrameworks += new TestFramework("utest.runner.Framework")
+    testFrameworks += new TestFramework("utest.runner.Framework"),
+    parallelExecution in Test := false
   ).
   jsSettings(
     name := "java.time testSuite on JS"
