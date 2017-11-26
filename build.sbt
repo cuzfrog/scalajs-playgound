@@ -51,7 +51,7 @@ val `js-tests` = project.dependsOn(root)
   .enablePlugins(ScalaJSPlugin)
   .settings(commonSettings)
   .settings(
-    //logLevel := Level.Debug,
+    jsEnv := new org.scalajs.jsenv.jsdomnodejs.JSDOMNodeJSEnv(),
     scalaJSUseMainModuleInitializer := true,
     scalaJSModuleKind := ModuleKind.CommonJSModule,
     testFrameworks += new TestFramework("com.github.cuzfrog.mytest.MyFramework"),
