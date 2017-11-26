@@ -1,5 +1,5 @@
-addSbtPlugin("com.github.cuzfrog" % "sbt-tmpfs" % "0.2.1")
-addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.16")
+//addSbtPlugin("com.github.cuzfrog" % "sbt-tmpfs" % "0.3.1")
+addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.21")
 addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.8.2")
 //addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "0.8.5")
 addSbtPlugin("io.spray" % "sbt-revolver" % "0.8.0")

@@ -1,0 +1,24 @@
+{
+  "name": "scalajs-playground",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "iconv-lite": "^0.4.19",
+    "jsdom": "^11.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cuzfrog/scalajs-playgound.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/cuzfrog/scalajs-playgound/issues"
+  },
+  "homepage": "https://github.com/cuzfrog/scalajs-playgound#readme"
+}

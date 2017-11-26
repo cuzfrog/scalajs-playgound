@@ -51,5 +51,11 @@ val `js-tests` = project.dependsOn(root)
   .enablePlugins(ScalaJSPlugin)
   .settings(commonSettings)
   .settings(
-    testFrameworks += new TestFramework("com.github.cuzfrog.mytest.MyFramework")
+    //logLevel := Level.Debug,
+    scalaJSUseMainModuleInitializer := true,
+    scalaJSModuleKind := ModuleKind.CommonJSModule,
+    testFrameworks += new TestFramework("com.github.cuzfrog.mytest.MyFramework"),
+    libraryDependencies ++= Seq(
+      "org.scala-js" %%% "scalajs-dom" % "0.9.3"
+    )
   )

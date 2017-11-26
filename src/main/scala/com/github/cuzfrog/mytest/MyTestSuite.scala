@@ -29,6 +29,7 @@ abstract class MyTestSuite {
         MyTestEvent(Status.Success)
       } catch {
         case NonFatal(t) =>
+          loggers.foreach(_.error(s"test failed with $t}"))
           MyTestEvent(Status.Failure)
       }
 
