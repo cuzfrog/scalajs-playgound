@@ -1,8 +1,13 @@
 package anywhere
 
-import com.github.cuzfrog.mytest.MyTest
+import com.github.cuzfrog.mytest.MyTestSuite
 
-@MyTest
-class Test1 {
-  
+object Test1 extends MyTestSuite{
+  test("this is my first test"){
+    println("do some test!")
+  }
+
+  test("this is a failed test"){
+    throw new AssertionError("manual failure.")
+  }
 }

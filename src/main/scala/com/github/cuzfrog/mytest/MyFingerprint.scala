@@ -1,6 +1,7 @@
 package com.github.cuzfrog.mytest
 
-object MyFingerprint extends sbt.testing.AnnotatedFingerprint{
+private class MyFingerprint extends sbt.testing.SubclassFingerprint {
   override def isModule(): Boolean = true
-  override def annotationName(): String = "com.github.cuzfrog.mytest.MyTest"
+  override def superclassName(): String = "com.github.cuzfrog.mytest.MyTestSuite"
+  override def requireNoArgConstructor(): Boolean = true
 }
