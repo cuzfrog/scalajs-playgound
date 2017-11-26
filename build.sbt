@@ -13,12 +13,12 @@ lazy val root = (project in file("."))
     version := "0.0.1",
     libraryDependencies ++= Seq(
       "org.scala-js" %%% "scalajs-java-time" % "0.2.1",
-      "com.lihaoyi" %%% "utest" % "0.4.7" % "test"
+      "org.scala-js" %% "scalajs-test-interface" % scalaJSVersion,
+      "com.lihaoyi" %%% "utest" % "0.6.0" % "test"
     ),
     scalaJSUseMainModuleInitializer := true,
     scalaJSModuleKind := ModuleKind.CommonJSModule,
-    testFrameworks += new TestFramework("utest.runner.Framework"),
-    parallelExecution in Test := false
+    testFrameworks += new TestFramework("utest.runner.Framework")
   ).enablePlugins(ScalaJSPlugin)
 
 lazy val testSuite = CrossProject(
@@ -31,20 +31,26 @@ lazy val testSuite = CrossProject(
   settings(commonSettings).
   settings(
     libraryDependencies ++= Seq(
-      "com.lihaoyi" %%% "utest" % "0.4.7" % "test"
+      "com.lihaoyi" %%% "utest" % "0.6.0" % "test"
     ),
-    testFrameworks += new TestFramework("utest.runner.Framework"),
-    parallelExecution in Test := false
+    testFrameworks += new TestFramework("utest.runner.Framework")
   ).
   jsSettings(
-    name := "java.time testSuite on JS"
+    name := "testSuite on JS"
   ).
   jsConfigure(_.dependsOn(root)).
   jvmSettings(
-    name := "java.time testSuite on JVM"
+    name := "testSuite on JVM"
   )
 
 lazy val testSuiteJS = testSuite.js
 lazy val testSuiteJVM = testSuite.jvm
 
 addCommandAlias("testAll",";testSuiteJS/test;testSuiteJVM/test")
+
+val `js-tests` = project.dependsOn(root)
+  .enablePlugins(ScalaJSPlugin)
+  .settings(commonSettings)
+  .settings(
+    testFrameworks += new TestFramework("com.github.cuzfrog.mytest.MyFramework")
+  )

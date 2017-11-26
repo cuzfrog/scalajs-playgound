@@ -1,6 +1,5 @@
 package com.github.cuzfrog
 
-import scala.collection.mutable
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
