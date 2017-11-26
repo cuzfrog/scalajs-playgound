@@ -4,10 +4,12 @@ import sbt.testing._
 
 import scala.collection.mutable.ArrayBuffer
 import scala.concurrent.duration.Deadline
+import scala.scalajs.reflect.annotation.EnableReflectiveInstantiation
 import scala.util.control.NonFatal
 
 private case class TestCase[T](description: String, codeBlock: () => T)
 
+@EnableReflectiveInstantiation
 abstract class MyTestSuite {
   private[this] val tests: ArrayBuffer[TestCase[_]] = ArrayBuffer.empty
 
@@ -15,9 +17,9 @@ abstract class MyTestSuite {
     tests += TestCase(description, () => block)
   }
 
-  private[mytest] def run(eventHandler: EventHandler,
-                          loggers: Array[Logger])
-                         (implicit taskDef: TaskDef): Unit = {
+  private[mytest] final def run(eventHandler: EventHandler,
+                                loggers: Array[Logger])
+                               (implicit taskDef: TaskDef): Unit = {
     tests.foreach { testCase =>
       val startTime = Deadline.now
       val event = try {

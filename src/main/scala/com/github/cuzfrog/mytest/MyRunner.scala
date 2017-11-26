@@ -26,10 +26,6 @@ private class MyRunner(override val args: Array[String],
   override def serializeTask(task: Task, serializer: TaskDef => String): String = serializer(task.taskDef)
 
   override def deserializeTask(task: String, deserializer: String => TaskDef): Task = {
-    println("raw task:" + task)
-    val taskDef = deserializer(task)
-    println("Test module name:" + taskDef.fullyQualifiedName())
-
     new MyTask(deserializer(task), testClassLoader)
   }
 }

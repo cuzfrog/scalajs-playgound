@@ -20,5 +20,6 @@ private class MyTask(override val taskDef: TaskDef,
                        loggers: Array[Logger],
                        continuation: Array[Task] => Unit): Unit = {
     this.execute(eventHandler, loggers)
+    continuation(Array.empty)
   }
 }

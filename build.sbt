@@ -1,4 +1,3 @@
-import sbt.Keys._
 import Settings._
 import org.scalajs.sbtplugin.cross.CrossProject
 
