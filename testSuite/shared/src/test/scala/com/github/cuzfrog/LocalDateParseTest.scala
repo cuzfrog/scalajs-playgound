@@ -5,7 +5,7 @@ import java.time.LocalDate
 import utest._
 import java.time.format.DateTimeParseException
 
-object DateParseTest extends TestSuite {
+object LocalDateParseTest extends TestSuite {
   import LocalDateUnit.dateParse
 
   val tests = this {

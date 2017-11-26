@@ -1,6 +1,7 @@
 package com.github.cuzfrog
 
 import java.time.LocalDate
+import java.time.format.DateTimeParseException
 
 import scala.scalajs.js
 
@@ -9,7 +10,7 @@ import scala.scalajs.js
   */
 object LocalDateUnit {
   def dateParse(in: CharSequence): LocalDate = {
-
+    if(!in.matches("""\d{4}-\d{2}-\d{2}""")) throw new DateTimeParseException()
 
     val date = new js.Date(js.Date.parse(in.toString))
     val year = date.getUTCFullYear
