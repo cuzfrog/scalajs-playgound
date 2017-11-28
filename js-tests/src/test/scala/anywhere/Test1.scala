@@ -13,13 +13,7 @@ object Test1 extends MyTestSuite{
 //    throw new AssertionError("manual failure.")
 //  }
 //
-//  test("iconv test"){
-//    val expectedText = "some text"
-//    val charset = "GBK"
-//    val bytes = IconvFacade.encode(expectedText, charset)
-//    val text = IconvFacade.decode(bytes, charset)
-//    assert(text == expectedText)
-//  }
+
 //
 //  test("dom test"){
 //    val div = org.scalajs.dom.document.createElement("div")

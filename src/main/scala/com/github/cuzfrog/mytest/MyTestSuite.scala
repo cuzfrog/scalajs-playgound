@@ -18,25 +18,11 @@ abstract class MyTestSuite {
     tests += TestCase(description, () => block)
   }
 
-  private[mytest] final def run(eventHandler: EventHandler,
-                                loggers: Array[Logger])
-                               (implicit taskDef: TaskDef): Unit = {
+  private[mytest] final def extractTests(taskDef: TaskDef): JsTestCase = {
+    val testStub = new JsTestCase(taskDef.fullyQualifiedName())
     tests.foreach { testCase =>
-      val startTime = Deadline.now
-      val event = try {
-        loggers.foreach(_.info(s"Test executing:[${testCase.description}]"))
-        //val result = testCase.codeBlock.apply() //run code
-        val result = ChildProcess.execSync("npm test")
-        loggers.foreach(_.info(s"return: $result"))
-        MyTestEvent(Status.Success)
-      } catch {
-        case NonFatal(t) =>
-          loggers.foreach(_.error(s"test failed with $t}"))
-          MyTestEvent(Status.Failure)
-      }
-
-      val duration = (Deadline.now - startTime).toMillis
-      eventHandler.handle(event.copy(duration = duration): Event)
+      testStub.add(testCase.description, testCase.codeBlock)
     }
+    testStub
   }
 }

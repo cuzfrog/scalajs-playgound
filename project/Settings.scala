@@ -11,7 +11,7 @@ object Settings {
     organization := "com.github.cuzfrog",
     scalaVersion := "2.12.2",
     scalacOptions ++= Seq(
-      "-Xlint",
+      //"-Xlint",
       "-unchecked",
       "-deprecation",
       "-feature"),
