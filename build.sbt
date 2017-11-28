@@ -16,6 +16,7 @@ lazy val root = (project in file("."))
       "com.lihaoyi" %%% "utest" % "0.6.0" % "test"
     ),
     scalaJSUseMainModuleInitializer := true,
+    scalaJSUseMainModuleInitializer in Test := true,
     scalaJSModuleKind := ModuleKind.CommonJSModule,
     testFrameworks += new TestFramework("utest.runner.Framework")
   ).enablePlugins(ScalaJSPlugin)
@@ -51,7 +52,6 @@ val `js-tests` = project.dependsOn(root)
   .enablePlugins(ScalaJSPlugin)
   .settings(commonSettings)
   .settings(
-    jsEnv := new org.scalajs.jsenv.jsdomnodejs.JSDOMNodeJSEnv(),
     scalaJSUseMainModuleInitializer := true,
     scalaJSModuleKind := ModuleKind.CommonJSModule,
     testFrameworks += new TestFramework("com.github.cuzfrog.mytest.MyFramework"),

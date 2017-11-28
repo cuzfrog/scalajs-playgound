@@ -1,5 +1,6 @@
 package com.github.cuzfrog.mytest
 
+import com.github.cuzfrog.nodejs.ChildProcess
 import sbt.testing._
 
 import scala.collection.mutable.ArrayBuffer
@@ -24,7 +25,8 @@ abstract class MyTestSuite {
       val startTime = Deadline.now
       val event = try {
         loggers.foreach(_.info(s"Test executing:[${testCase.description}]"))
-        val result = testCase.codeBlock.apply() //run code
+        //val result = testCase.codeBlock.apply() //run code
+        val result = ChildProcess.execSync("npm test")
         loggers.foreach(_.info(s"return: $result"))
         MyTestEvent(Status.Success)
       } catch {
