@@ -1,8 +1,8 @@
 package anywhere
 
-import com.github.cuzfrog.IconvFacade
 import com.github.cuzfrog.mytest.MyTestSuite
 
+import scala.scalajs.reflect.annotation.EnableReflectiveInstantiation
 
 object Test1 extends MyTestSuite{
   test("this is my first test"){

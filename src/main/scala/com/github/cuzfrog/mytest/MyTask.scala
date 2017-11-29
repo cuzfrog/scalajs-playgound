@@ -21,11 +21,10 @@ private class MyTask(override val taskDef: TaskDef,
 
     val jsTestCase = suite.extractTests(taskDef)
     JsTestConverter.generateJsTests(jsTestCase)
-    TestStub.set(jsTestCase)
 
     val startTime = Deadline.now
     val event = try {
-      ChildProcess.execSync(s"npm test -- ${jsTestCase.path}")
+      ChildProcess.execSync(s"npm test -- ${jsTestCase.getPath}")
       //loggers.foreach(_.info(s"return: $result"))
       MyTestEvent(Status.Success)
     } catch {
