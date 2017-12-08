@@ -9,5 +9,5 @@ import scala.sys.process.Process
   * Created by cuz on 5/17/17.
   */
 object TmpTest extends App{
-  Process("npm test").!
+  Process("npm test") !!
 }
