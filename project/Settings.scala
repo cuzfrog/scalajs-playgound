@@ -14,7 +14,8 @@ object Settings {
       //"-Xlint",
       "-unchecked",
       "-deprecation",
-      "-feature"),
+      "-feature",
+      "-P:scalajs:sjsDefinedByDefault"),
     libraryDependencies ++= Seq(
 //      "junit" % "junit" % "4.12" % "test",
 //      "com.novocode" % "junit-interface" % "0.11" % "test->default"

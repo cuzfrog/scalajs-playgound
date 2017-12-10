@@ -1,11 +1,18 @@
 package com.github.cuzfrog
 
 import scala.scalajs.js
-import com.github.cuzfrog.nodejs.ChildProcess
 
 object TmpApp {
   def main(args: Array[String]): Unit = {
-    val output = ChildProcess.execSync("npm test")
-    println(s"Exit code: $output")
+    println("asdf")
+  }
+}
+
+class MyJsObject extends js.Object {
+  private var value = 0
+
+  def act(): Unit = {
+    value += 1
+    println(value)
   }
 }
